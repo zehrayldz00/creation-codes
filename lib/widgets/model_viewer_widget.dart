@@ -8,14 +8,15 @@ class ModelViewerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ModelViewer(
+    return RepaintBoundary(
+        child: ModelViewer(
           src: modelPath,
-        alt: "3D Model",
-        ar: true,
-        autoRotate: true,
-        cameraControls: true,
-      )
-    );
+          alt: "3D Model",
+          ar: true,
+          autoRotate: false,
+          cameraControls: true,
+        ),
+      );
+
   }
 }
