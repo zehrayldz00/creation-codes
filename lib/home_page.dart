@@ -1,5 +1,5 @@
 import 'package:creationcodes/services/firebase_storage_service.dart';
-import 'package:creationcodes/widgets/model_viewer_widget.dart';
+import 'package:creationcodes/presentation/widgets/model_viewer_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
