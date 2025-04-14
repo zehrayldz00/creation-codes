@@ -1,45 +1,53 @@
 import 'package:creationcodes/core/constants/app_colors.dart';
+import 'package:creationcodes/core/constants/app_paddings.dart';
+import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/models/category_model.dart';
+
 class CategoryCard extends StatelessWidget {
-  final String title;
-  //final String imageAsset;
+  final CategoryModel category;
   final VoidCallback onTap;
 
-  const CategoryCard({super.key, required this.title,
-    //required this.imageAsset,
+  const CategoryCard({super.key,
+    required this.category,
     required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16),
-        padding: const EdgeInsets.all(50),
         decoration: BoxDecoration(
           color: AppColors.background,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: AppColors.cardShadow,
-              offset: const Offset(4, 4),
-              blurRadius: 10,
+              offset: const Offset(-4, 4),
+              blurRadius: 1,
               spreadRadius: 1
             ),
             const BoxShadow(
               color: Colors.white,
-              offset: Offset(-4, -4),
-              blurRadius: 10,
+              offset: Offset(4, -4),
+              blurRadius: 5,
               spreadRadius: 1
             ),
           ],
         ),
-        child: Row(
+        padding: AppPaddings.all,
+        child: Column(
+          spacing: 50,
+          //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             //Image.asset(imageAsset, height: 5,),
             //const SizedBox(width: 10,),
-            Text(title, style: const TextStyle(fontSize: 18),)
+            Text(
+              category.title,
+              style: AppTextStyles.subtitle,
+              textAlign: TextAlign.center,
+            )
           ],
         )
       ),
