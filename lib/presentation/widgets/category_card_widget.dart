@@ -38,16 +38,24 @@ class CategoryCard extends StatelessWidget {
         ),
         padding: AppPaddings.all,
         child: Column(
-          spacing: 50,
-          //mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            //Image.asset(imageAsset, height: 5,),
-            //const SizedBox(width: 10,),
-            Text(
-              category.title,
-              style: AppTextStyles.subtitle,
-              textAlign: TextAlign.center,
-            )
+            SizedBox(height: 8,),
+            Expanded(
+              flex: 1,
+              child: Text(
+                category.title,
+                style: AppTextStyles.subtitle,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Expanded(
+              flex:3,
+              child: Image.asset(
+                category.imagePath,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(height: 5,)
           ],
         )
       ),

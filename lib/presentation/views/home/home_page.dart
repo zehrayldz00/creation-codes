@@ -10,12 +10,14 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   final List<CategoryModel> categories = const[
-    CategoryModel(title: 'Biyoloji', ),
-    CategoryModel(title: 'Kimya', ),
-    CategoryModel(title: 'Model 3', ),
-    CategoryModel(title: 'Model 4', ),
-    CategoryModel(title: 'Model 5', ),
-    CategoryModel(title: 'Model 6', ),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
+    CategoryModel(title: 'Biyoloji', imagePath: "assets/bio.png"),
   ];
 
   @override
