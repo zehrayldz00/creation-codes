@@ -17,7 +17,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryDetailPage() ));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryDetailPage(modelIDs: category.modelID) ));
       },
       child: Neumorphic(
          style: NeumorphicStyle(
@@ -27,26 +27,6 @@ class CategoryCard extends StatelessWidget {
            depth: 8,
            lightSource: LightSource.topLeft,
          ),
-    /*child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.background,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.cardShadow,
-                offset: const Offset(-4, 4),
-                blurRadius: 1,
-                spreadRadius: 1
-              ),
-              const BoxShadow(
-                color: Colors.white,
-                offset: Offset(4, -4),
-                blurRadius: 5,
-                spreadRadius: 1
-              ),
-            ],
-          ),
-          padding: AppPaddings.all,*/
           child: Column(
             children: [
               SizedBox(height: 8,),
@@ -54,7 +34,6 @@ class CategoryCard extends StatelessWidget {
                 flex: 1,
                 child: Text(
                   category.title['en'] ?? "",
-                  //category.title,
                   style: AppTextStyles.subtitle,
                   textAlign: TextAlign.center,
                 ),
@@ -63,7 +42,6 @@ class CategoryCard extends StatelessWidget {
                 flex:3,
                 child: Image.network(
                   category.imageUrl,
-                  //category.imagePath,
                   fit: BoxFit.contain,
                 ),
               ),

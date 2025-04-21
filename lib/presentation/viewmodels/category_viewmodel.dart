@@ -23,7 +23,6 @@ class CategoryViewModel extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-
     try {
       _categories = await getCategoriesUseCase.call();
       _error = null;

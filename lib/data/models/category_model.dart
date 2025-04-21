@@ -8,22 +8,17 @@ class CategoryModel extends Category {
     required super.modelID,
   });
 
-  factory CategoryModel.fromFirestore(DocumentSnapshot doc){
+  factory CategoryModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
 
     return CategoryModel(
-        title: Map<String, String>.from(data['title'] ?? {}),
-        imageUrl: data['imageUrl'] ?? '',
-        modelID: List<String>.from(data['modelID'] ?? []),
+      title: Map<String, String>.from(data['title'] ?? {}),
+      imageUrl: data['imageUrl'] ?? '',
+      modelID: List<String>.from(data['modelID'] ?? []),
     );
   }
 
-  Map<String, dynamic> toMap(){
-    return {
-      'title' : title,
-      'imageUrl' : imageUrl,
-      'modelID' : modelID
-    };
+  Map<String, dynamic> toMap() {
+    return {'title': title, 'imageUrl': imageUrl, 'modelID': modelID};
   }
-
 }

@@ -36,11 +36,11 @@ class HomePage extends StatelessWidget {
         itemBuilder: (context, index) {
           final category = categories[index];
           return CategoryCard(
-            category: category,
+            category: category.toModel(),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const CategoryDetailPage()),
+                MaterialPageRoute(builder: (_) => CategoryDetailPage(modelIDs: category.modelID)),
               );
             },
           );
