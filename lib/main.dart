@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:creationcodes/core/services/language_service.dart';
 import 'package:creationcodes/data/repositories/category_repository_impl.dart';
 import 'package:creationcodes/data/repositories/figure_repository_impl.dart';
 import 'package:creationcodes/presentation/viewmodels/category_viewmodel.dart';
 import 'package:creationcodes/presentation/viewmodels/figure_viewmodel.dart';
 import 'package:creationcodes/presentation/views/home/home_page.dart';
+import 'package:creationcodes/presentation/views/language_selection/language_selection_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,11 +19,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  final languageService = await LanguageService.getInstance();
+  bool isLanguageSelected = languageService.isLanguageSelected();
+
+  runApp(MyApp(isLanguageSelected : isLanguageSelected));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLanguageSelected;
+
+  const MyApp({super.key, required this.isLanguageSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +71,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorSchemeSeed: Colors.deepPurple,
         ),
-        home: const HomePage(),
+        debugShowCheckedModeBanner: false,
+        home: isLanguageSelected ? HomePage() : LanguageSelectionPage(),
       ),
     );
   }

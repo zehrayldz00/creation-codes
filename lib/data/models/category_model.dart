@@ -21,4 +21,8 @@ class CategoryModel extends Category {
   Map<String, dynamic> toMap() {
     return {'title': title, 'imageUrl': imageUrl, 'modelID': modelID};
   }
+
+  String getTitleByLanguage(String langCode){
+    return title[langCode] ?? title.values.first;
+  }
 }

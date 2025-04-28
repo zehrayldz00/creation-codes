@@ -2,6 +2,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:creationcodes/data/models/category_model.dart';
 
+import '../../core/services/language_service.dart';
+
 // Abstract interface – sadece 'ne yapılacak' tanımlanır
 abstract class CategoryRemoteDataSource{
   Future<List<CategoryModel>> getCategories();
@@ -17,13 +19,21 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource{
   @override
   Future<List<CategoryModel>> getCategories() async {
     try{
+      final languageService = await LanguageService.getInstance();
+      final selectedLanguageCode = languageService.selectedLanguageCode ?? 'tr';
+
       // "categories" koleksiyonundaki tüm dökümanları al
       final snapshot = await firestore.collection('categories').get();
 
-      // Her dökümanı CategoryModele cçevir ve liste olarak döndür
-      return snapshot.docs
-          .map((doc) => CategoryModel.fromFirestore(doc))
-          .toList();
+      // Her dökümanı CategoryModele çevir ve liste olarak döndür
+      return snapshot.docs.map((doc) {
+        final model = CategoryModel.fromFirestore(doc);
+        return CategoryModel(
+            title: {selectedLanguageCode : model.title[selectedLanguageCode] ?? model.title.values.first,},
+            imageUrl: model.imageUrl,
+            modelID: model.modelID
+        );
+      }).toList();
     }
     catch(e){
       // Hata olursa ileriye dönük özel exception sınıfları tanımlanabilir

@@ -1,8 +1,8 @@
-import 'package:creationcodes/core/constants/app_colors.dart';
 import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/views/category_detail/category_detail_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
+import '../../core/constants/app_colors.dart';
 import '../../domain/entities/category.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -22,10 +22,10 @@ class CategoryCard extends StatelessWidget {
       child: Neumorphic(
          style: NeumorphicStyle(
            shape: NeumorphicShape.concave,
-           color: AppColors.background,
            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
            depth: 8,
            lightSource: LightSource.topLeft,
+           color: AppColors.background
          ),
           child: Column(
             children: [
