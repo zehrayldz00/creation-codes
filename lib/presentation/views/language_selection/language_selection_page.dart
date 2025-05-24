@@ -1,23 +1,33 @@
-import 'package:creationcodes/core/services/language_service.dart';
-import 'package:creationcodes/presentation/views/home/home_page.dart';
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
+import 'package:creationcodes/core/constants/app_colors.dart';
+import 'package:creationcodes/core/constants/app_text_styles.dart';
+import 'package:creationcodes/presentation/viewmodels/onboarding_viewmodel.dart';
+import 'package:creationcodes/presentation/views/onboarding/onboarding_page.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
+import 'package:provider/provider.dart';
 
-class LanguageSelectionPage extends StatelessWidget {
-  LanguageSelectionPage({super.key});
+import '../../../core/constants/language_codes.dart';
+import '../../viewmodels/language_viewmodel.dart';
+import '../home/home_page.dart';
 
-  final List<Map<String, String>> languages = [
-    {'code': 'en', 'name': 'English'},
-    {'code': 'tr', 'name': 'Türkçe'},
-  ];
+class LanguageSelectionPage extends StatefulWidget {
+  const LanguageSelectionPage({super.key});
 
-  void _onLanguageSelected(BuildContext context, String code) async {
-    final languageService = await LanguageService.getInstance();
-    await languageService.setLanguage(code);
+  @override
+  State<LanguageSelectionPage> createState() => _LanguageSelectionPageState();
+}
+
+class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
+  final languages = LanguageCodes.languages;
+
+  void _onLanguageSelected(BuildContext context, String code ) async {
+    final isOnboardingSeen = Provider.of<OnboardingViewModel>(context, listen:false).isOnboardingSeen ?? false;
+    await context.read<LanguageViewModel>().selectedLanguage(code);
 
     if (context.mounted) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) =>  isOnboardingSeen ? HomePage() : OnboardingPage()),
     );
     }
   }
@@ -25,17 +35,31 @@ class LanguageSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Select Language Screen"),),
-      body: ListView.builder(
-        itemCount: languages.length,
-          itemBuilder: (context, index){
-          final language = languages[index];
-          return ListTile(
-            title: Text(language['name']!),
-            onTap: () => _onLanguageSelected(context, language['code']!),
-          );
-          }
-      ),
+      backgroundColor: AppColors.background,
+          appBar: AppBar(title: Text("Select Language", style: AppTextStyles.header), leading: Icon(Icons.translate), centerTitle: true, backgroundColor: AppColors.background,),
+          body: ListView.builder(
+            itemCount: languages.length,
+              itemBuilder: (context, index){
+              final language = languages[index];
+              return Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 20, left: 20),
+                child: Neumorphic(
+                  style: NeumorphicStyle(
+                    shape: NeumorphicShape.concave,
+                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
+                    depth: 3,
+                    color: AppColors.background,
+                  ),
+                  child: ListTile(
+                    title: Text(language['name']!, textAlign: TextAlign.center, style: AppTextStyles.subtitle,),
+                    onTap: () {
+                    _onLanguageSelected(context, language['code']!);
+                    }
+                  ),
+                ),
+              );
+              },
+          ),
     );
   }
 }

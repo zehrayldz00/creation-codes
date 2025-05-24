@@ -6,6 +6,8 @@ class LanguageViewModel extends ChangeNotifier {
 
   String? get selectedLanguageCode => _selectedLanguageCode;
 
+  bool get isLanguageSelected => _selectedLanguageCode != null;
+
   Future<void> loadLanguage() async{
     _selectedLanguageCode = await SharedPreferencesManager.getLanguage();
     notifyListeners();
