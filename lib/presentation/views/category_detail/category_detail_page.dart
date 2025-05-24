@@ -6,65 +6,55 @@ import 'package:provider/provider.dart';
 
 import '../../../core/constants/app_paddings.dart';
 
-class CategoryDetailPage extends StatelessWidget {
+class CategoryDetailPage extends StatefulWidget {
   final List<String> modelIDs;
 
   const CategoryDetailPage({super.key, required this.modelIDs});
 
   @override
-  Widget build(BuildContext context) {
+  State<CategoryDetailPage> createState() => _CategoryDetailPageState();
+}
 
-    final viewModel = Provider.of<FigureViewModel>(context, listen:false);
+class _CategoryDetailPageState extends State<CategoryDetailPage> {
+  late FigureViewModel viewModel;
 
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      viewModel.fetchFiguresByCategory(modelIDs);
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    viewModel = Provider.of<FigureViewModel>(context, listen: false);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      viewModel.fetchFiguresByCategory(widget.modelIDs);
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Miracles'), backgroundColor: AppColors.background,),
       backgroundColor: AppColors.background,
       body: Consumer<FigureViewModel>(
-        builder: (context, vm, _){
-      if(vm.isLoading) return Center(child: CircularProgressIndicator());
-      if(vm.error != null) return Text("Hata var hata: ${vm.error}");
+        builder: (context, vm, _) {
+          if (vm.isLoading) return Center(child: CircularProgressIndicator());
+          if (vm.error != null) return Text("Hata var hata: ${vm.error}");
 
-      return GridView.builder(
-        padding: AppPaddings.all,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, //ikişerli
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          childAspectRatio: 3 / 4,
-        ),
-        itemCount: vm.figures.length,
-        itemBuilder: (context, index) {
-          final figure = vm.figures[index];
-          return FigureCardWidget(
-            figure: figure.toModel(),
-            onTap: () {},
+          return GridView.builder(
+            padding: AppPaddings.all,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, //ikişerli
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 3 / 4,
+            ),
+            itemCount: vm.figures.length,
+            itemBuilder: (context, index) {
+              final figure = vm.figures[index];
+              return FigureCardWidget(figure: figure.toModel(), onTap: () {});
+            },
           );
         },
-      );})
-
-
-
-
-      /*Consumer<FigureViewModel>(
-          builder: (context, vm, _){
-            if(vm.isLoading) return Center(child: CircularProgressIndicator());
-            if(vm.error != null) return Text("Hata var hata: ${vm.error}");
-
-            return ListView.builder(
-              itemCount: vm.figures.length,
-              itemBuilder: (_, index){
-                final figure = vm.figures[index];
-                return FigureCardWidget(
-                    figure: figure.toModel(),
-                    onTap: (){}
-                );
-              },
-            );
-          }
-      ),*/
+      ),
     );
   }
 }
