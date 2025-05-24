@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 
 import '../../domain/entities/figure.dart';
@@ -6,7 +7,7 @@ import '../../domain/usecases/get_figures_byids_usecases.dart';
 class FigureViewModel extends ChangeNotifier{
   final GetFiguresByIdsUseCase getFiguresByIdsUseCase;
 
-  FigureViewModel({required this.getFiguresByIdsUseCase});
+  FigureViewModel({required this.getFiguresByIdsUseCase,});
 
   List<Figure> _figures = [];
   List<Figure> get figures => _figures;
