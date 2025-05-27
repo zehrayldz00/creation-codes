@@ -1,6 +1,7 @@
 import 'package:creationcodes/core/utils/shared_preferences_manager.dart';
 import 'package:flutter/material.dart';
 
+
 class LanguageViewModel extends ChangeNotifier {
   String? _selectedLanguageCode;
 
@@ -18,4 +19,5 @@ class LanguageViewModel extends ChangeNotifier {
     await SharedPreferencesManager.saveLanguage(code);
     notifyListeners();
   }
+
 }

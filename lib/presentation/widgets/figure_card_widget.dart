@@ -33,9 +33,9 @@ class FigureCardWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 8,),
+            SizedBox(height: 25,),
             Expanded(
-              flex: 1,
+              flex: 2,
                 child: Text(
                   figure.title[languageCode] ?? "",
                   style: AppTextStyles.subtitle,
@@ -43,13 +43,13 @@ class FigureCardWidget extends StatelessWidget {
                 )
             ),
             Expanded(
-              flex: 3,
+              flex: 1,
               child: Image.network(
                 figure.imageUrl,
                 fit: BoxFit.contain,
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 25),
           ],
         ),
     ),

@@ -1,7 +1,7 @@
 //import 'package:flutter/material.dart';
 import 'package:creationcodes/core/constants/app_colors.dart';
 import 'package:creationcodes/core/constants/app_text_styles.dart';
-import 'package:creationcodes/presentation/views/splash/splash_page.dart';
+import 'package:creationcodes/presentation/views/home/home_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 
@@ -18,19 +18,21 @@ class LanguageSelectionMenuPage extends StatefulWidget {
 class _LanguageSelectionPageState extends State<LanguageSelectionMenuPage> {
   final languages = LanguageCodes.languages;
 
-  void _onLanguageSelected(BuildContext context, String code ) async {
+  /*void _onLanguageSelected(BuildContext context, String code ) async {
     await context.read<LanguageViewModel>().selectedLanguage(code);
     if (context.mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => SplashPage()),
+        MaterialPageRoute(builder: (context) => HomePage()),
       );
     }
 
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    final vm = context.read<LanguageViewModel>();
+
     return Scaffold(
         backgroundColor: AppColors.background,
         appBar: AppBar(title: Text("Select Language", style: AppTextStyles.header), leading: Icon(Icons.translate), centerTitle: true, backgroundColor: AppColors.background,),
@@ -50,7 +52,14 @@ class _LanguageSelectionPageState extends State<LanguageSelectionMenuPage> {
                 child: ListTile(
                     title: Text(language['name']!, textAlign: TextAlign.center, style: AppTextStyles.subtitle,),
                     onTap: () {
-                      _onLanguageSelected(context, language['code']!);
+                      vm.selectedLanguage(language['code']!);
+                      if (context.mounted) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
+                      }
+
                     }
                 ),
               ),

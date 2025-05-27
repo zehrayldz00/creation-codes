@@ -44,13 +44,13 @@ class CategoryCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex:3,
+                flex:2,
                 child: Image.network(
                   category.imageUrl,
                   fit: BoxFit.contain,
                 ),
               ),
-              const SizedBox(height: 5,)
+              const SizedBox(height: 25,)
             ],
           //)
         ),

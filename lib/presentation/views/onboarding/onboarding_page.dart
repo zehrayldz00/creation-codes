@@ -1,3 +1,4 @@
+import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/core/constants/onboarding_strings.dart';
 import 'package:creationcodes/presentation/viewmodels/language_viewmodel.dart';
 import 'package:creationcodes/presentation/viewmodels/onboarding_viewmodel.dart';
@@ -17,6 +18,7 @@ class OnboardingPage extends StatelessWidget {
     final languageCode = context.watch<LanguageViewModel>().selectedLanguageCode ?? 'en';
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: Stack(
         children: [
           PageView(
@@ -78,8 +80,8 @@ class NextButton extends StatelessWidget {
       right: 30,
       child: ElevatedButton(
         onPressed: () => Provider.of<OnboardingViewModel>(context, listen: false).nextPage(context),
-        style : ElevatedButton.styleFrom(shape: CircleBorder() ,backgroundColor : AppColors.activeDot),
-        child: Icon(Icons.arrow_right),
+        style : ElevatedButton.styleFrom(shape: CircleBorder() ,backgroundColor : AppColors.activeDot, ),
+        child: Icon(Icons.navigate_next, color: Colors.white),
       ),
     );
   }
@@ -104,7 +106,7 @@ class SkipButton extends StatelessWidget {
             MaterialPageRoute(builder: (_) => SplashPage()),
           );
         },
-        child: const Text("Skip"),
+        child: const Icon(Icons.skip_next),
       ),
     );
   }
@@ -132,7 +134,10 @@ class Onboarding extends StatelessWidget {
               image: AssetImage(image),
             ),
           ),
-          Flexible(flex:2, child: Text(description)),
+          Flexible(flex:2, child: Padding(
+            padding: const EdgeInsets.only(right: 20.0, left: 20.0),
+            child: Text(description, style: AppTextStyles.subtitle,textAlign: TextAlign.center,),
+          )),
           SizedBox(height: 60,)
         ],
       ),
