@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Convince Me', style: AppTextStyles.header),
+        title: Text('Creation Codes', style: AppTextStyles.header),
         backgroundColor: AppColors.background,
         actions: [LanguageSelectButton()],
       ),

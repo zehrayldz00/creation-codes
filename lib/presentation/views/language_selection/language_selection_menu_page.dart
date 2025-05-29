@@ -4,6 +4,7 @@ import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/views/home/home_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../../../core/constants/language_codes.dart';
 import '../../viewmodels/language_viewmodel.dart';
@@ -17,17 +18,6 @@ class LanguageSelectionMenuPage extends StatefulWidget {
 
 class _LanguageSelectionPageState extends State<LanguageSelectionMenuPage> {
   final languages = LanguageCodes.languages;
-
-  /*void _onLanguageSelected(BuildContext context, String code ) async {
-    await context.read<LanguageViewModel>().selectedLanguage(code);
-    if (context.mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-    }
-
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +44,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionMenuPage> {
                     onTap: () {
                       vm.selectedLanguage(language['code']!);
                       if (context.mounted) {
+                        Restart.restartApp();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => HomePage()),
