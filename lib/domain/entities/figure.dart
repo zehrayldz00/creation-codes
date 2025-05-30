@@ -3,12 +3,14 @@ import 'package:creationcodes/data/models/figure_model.dart';
 class Figure {
   final Map<String, String> title;
   final Map<String, String> description;
+  final String id;
   final String imageUrl;
   final String modelUrl;
 
   const Figure({
     required this.title,
     required this.description,
+    required this.id,
     required this.imageUrl,
     required this.modelUrl,
   });
@@ -17,6 +19,7 @@ class Figure {
     return FigureModel(
       title: title,
       description: description,
+      id: id,
       imageUrl: imageUrl,
       modelUrl: modelUrl,
     );
