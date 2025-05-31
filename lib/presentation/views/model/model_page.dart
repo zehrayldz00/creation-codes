@@ -1,16 +1,17 @@
 import 'package:creationcodes/presentation/widgets/model_viewer_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/services/firebase_storage_service.dart';
+import '../../../core/services/firebase_storage_service.dart';
 
 class ModelPage extends StatelessWidget {
-  final String modelPath = '3dModels/embed.glb';
+  final String modelPath;
 
-  const ModelPage({super.key});
+  const ModelPage({super.key, required this.modelPath});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Model Görüntüleme"),),
       body: FutureBuilder<String> (
         future: FirebaseStorageService.getModelDownloadUrl(modelPath),
         builder: (context, snapshot){
