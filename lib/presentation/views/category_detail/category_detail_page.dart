@@ -40,17 +40,16 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
           if (vm.error != null) return Text("Hata var hata: ${vm.error}");
 
           return GridView.builder(
-            padding: AppPaddings.all,
+            padding: AppPaddings.figureCardAll,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, //ikişerli
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              childAspectRatio: 3 / 4,
+              crossAxisCount: 1,
+              mainAxisSpacing: 30,
+              childAspectRatio: 1,
             ),
             itemCount: vm.figures.length,
             itemBuilder: (context, index) {
               final figure = vm.figures[index];
-              return FigureCardWidget(figure: figure.toModel(), onTap: () {});
+              return FigureCardWidget(figure: figure.toModel(), onTap: (){});
             },
           );
         },

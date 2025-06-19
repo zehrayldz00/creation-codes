@@ -93,8 +93,8 @@ class SkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 80,
-      right: 30,
+      top: 60,
+      right: 20,
       child: TextButton(
         onPressed: () async {
           final navigator = Navigator.of(context);
@@ -106,16 +106,47 @@ class SkipButton extends StatelessWidget {
             MaterialPageRoute(builder: (_) => SplashPage()),
           );
         },
-        child: const Icon(Icons.skip_next),
+        child: const Icon(Icons.skip_next,),
       ),
     );
   }
 }
 
-class Onboarding extends StatelessWidget {
+class Onboarding extends StatefulWidget {
   const Onboarding({super.key, required this.image, required this.description});
 
   final String image, description;
+
+  @override
+  State<Onboarding> createState() => _OnboardingState();
+}
+
+class _OnboardingState extends State<Onboarding> with SingleTickerProviderStateMixin{
+
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2), // daha uzun = daha yavaş
+      vsync: this,
+    )..repeat(reverse: true); // yukarı-aşağı tekrar etsin
+
+    _animation = Tween<Offset>(
+      begin: Offset(0, 0),     // başlangıç pozisyonu
+      end: Offset(0, 0.02),    // aşağı doğru çok az kaydır
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut, // yumuşak geçiş
+    ));
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,22 +154,25 @@ class Onboarding extends StatelessWidget {
     late double screenh = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: const EdgeInsets.only(top:90, left: 8.0, right: 8.0),
+      padding: const EdgeInsets.only(top:60, left: 8.0, right: 8.0),
       child: Column(
         children: [
           Flexible(
             flex: 3,
-            child: Image(
-              width: screenw*0.8,
-              height: screenh*0.8,
-              image: AssetImage(image),
+            child: SlideTransition(
+              position: _animation,
+              child: Image(
+                width: screenw*0.8,
+                height: screenh*0.8,
+                image: AssetImage(widget.image),
+              ),
             ),
           ),
           Flexible(flex:2, child: Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-            child: Text(description, style: AppTextStyles.subtitle,textAlign: TextAlign.center,),
+            child: Text(widget.description, style: AppTextStyles.subtitle,textAlign: TextAlign.center,),
           )),
-          SizedBox(height: 60,)
+          SizedBox(height: 120,)
         ],
       ),
     );

@@ -35,16 +35,14 @@ class CategoryCard extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 25,),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  category.title[languageCode] ?? '',
-                  style: AppTextStyles.subtitle,
-                  textAlign: TextAlign.center,
-                ),
+              Text(
+                category.title[languageCode] ?? '',
+                style: AppTextStyles.subtitle,
+                textAlign: TextAlign.center,
               ),
+              SizedBox(height: 30,),
               Expanded(
-                flex:2,
+                flex:3,
                 child: Image.network(
                   category.imageUrl,
                   fit: BoxFit.contain,

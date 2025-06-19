@@ -10,9 +10,15 @@ class AppTextStyles {
   );
 
   static TextStyle subtitle = GoogleFonts.josefinSans(
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: FontWeight.w400,
     color: AppColors.secondaryText
+  );
+
+  static TextStyle ayetStyle = GoogleFonts.dancingScript(
+    fontSize : 25,
+    fontWeight: FontWeight.bold,
+    color : AppColors.primaryText
   );
 
 }

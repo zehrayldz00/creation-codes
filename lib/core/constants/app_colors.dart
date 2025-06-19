@@ -5,7 +5,7 @@ class AppColors{
   static const Color primaryText = Color(0xFF1E1E2C);
   static const Color secondaryText = Color(0XFF6C7A89);
   static const Color cardShadow = Color(0xFFDADADA);
-  static const Color activeDot = Color(0xFF008000);
+  static const Color activeDot = Color(0xFF0F3AAB);
 
   /*static const LinearGradient metallicGradient = LinearGradient(
     colors: [

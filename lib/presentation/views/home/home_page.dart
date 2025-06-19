@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisCount: 2,
               mainAxisSpacing: 16,
               crossAxisSpacing: 16,
-              childAspectRatio: 3 / 4,
+              childAspectRatio: 3 / 5,
             ),
             itemCount: vm.categories.length,
             itemBuilder: (context, index) {

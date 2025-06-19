@@ -1,6 +1,6 @@
 import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/viewmodels/language_viewmodel.dart';
-import 'package:creationcodes/presentation/views/model_page.dart';
+import 'package:creationcodes/presentation/views/model/model_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,12 @@ class FigureCardWidget extends StatelessWidget {
     final languageCode = context.watch<LanguageViewModel>().selectedLanguageCode ?? 'en';
 
     return InkWell(
-      onTap: (){Navigator.push(context, MaterialPageRoute(builder : (context) => ModelPage()));},
+      onTap: (){Navigator.push(context, MaterialPageRoute(builder : (context) => ModelPage(
+        modelPath: figure.modelUrl,
+        title: figure.title[languageCode] ?? '',
+        ayet: figure.ayet[languageCode] ?? '',
+        description: figure.description[languageCode] ?? '',
+      )));},
       child: Neumorphic(
         style: NeumorphicStyle(
           shape : NeumorphicShape.concave,
@@ -43,7 +48,7 @@ class FigureCardWidget extends StatelessWidget {
                 )
             ),
             Expanded(
-              flex: 1,
+              flex: 3,
               child: Image.network(
                 figure.imageUrl,
                 fit: BoxFit.contain,

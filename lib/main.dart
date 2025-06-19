@@ -32,8 +32,8 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => languageViewModel,
-      child: MyApp(isOnboardingSeen : isSeen),
-    )
+      child: MyApp(isOnboardingSeen: isSeen),
+    ),
   );
 }
 
@@ -53,13 +53,14 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (_) {
-            final languageCode = context.read<LanguageViewModel>().selectedLanguageCode ?? 'en';
+            final languageCode =
+                context.read<LanguageViewModel>().selectedLanguageCode ?? 'en';
             final viewModel = CategoryViewModel(
               getCategoriesUseCase: GetCategoriesUseCase(
                 CategoryRepositoryImpl(
                   remoteDataSource: CategoryRemoteDataSourceImpl(
                     firestore: FirebaseFirestore.instance,
-                    languageCode: languageCode
+                    languageCode: languageCode,
                   ),
                 ),
               ),
@@ -69,29 +70,35 @@ class _MyAppState extends State<MyApp> {
           },
         ),
         ChangeNotifierProvider(
-            create: (_) {
-              final languageCode = context.read<LanguageViewModel>().selectedLanguageCode ?? 'en';
-              final viewModel = FigureViewModel(
-                  getFiguresByIdsUseCase: GetFiguresByIdsUseCase(
-                      FigureRepositoryImpl(
-                          remoteDataSource: FigureRemoteDataSourceImpl(
-                            firestore: FirebaseFirestore.instance,
-                            languageCode: languageCode,
-                          )
-                      )
-                  )
-              );
-              //viewModel.getFiguresByIdsUseCase();
-              return viewModel;
-            }
-        ),
-        ChangeNotifierProvider(
-            create: (_) => OnboardingViewModel(
-                isSeenUseCase: IsOnboardingSeenUseCase(SharedPreferencesManager()),
-                setSeenUseCase: SetOnboardingSeenUseCase(SharedPreferencesManager())
-            )
+          create: (_) {
+            final languageCode =
+                context.read<LanguageViewModel>().selectedLanguageCode ?? 'en';
+            final viewModel = FigureViewModel(
+              getFiguresByIdsUseCase: GetFiguresByIdsUseCase(
+                FigureRepositoryImpl(
+                  remoteDataSource: FigureRemoteDataSourceImpl(
+                    firestore: FirebaseFirestore.instance,
+                    languageCode: languageCode,
+                  ),
+                ),
+              ),
+            );
+            //viewModel.getFiguresByIdsUseCase();
+            return viewModel;
+          },
         ),
 
+        ChangeNotifierProvider(
+          create:
+              (_) => OnboardingViewModel(
+                isSeenUseCase: IsOnboardingSeenUseCase(
+                  SharedPreferencesManager(),
+                ),
+                setSeenUseCase: SetOnboardingSeenUseCase(
+                  SharedPreferencesManager(),
+                ),
+              ),
+        ),
       ],
       child: MaterialApp(
         title: 'CreationCodes',
