@@ -1,4 +1,3 @@
-//import 'package:flutter/material.dart';
 import 'package:creationcodes/core/constants/app_colors.dart';
 import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/viewmodels/onboarding_viewmodel.dart';
@@ -21,7 +20,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
   final languages = LanguageCodes.languages;
 
   void _onLanguageSelected(BuildContext context, String code ) async {
-    final isOnboardingSeen = Provider.of<OnboardingViewModel>(context, listen:false).isOnboardingSeen ?? false;
+    final isOnboardingSeen = Provider.of<OnboardingViewModel>(context, listen:false).isOnboardingSeen ;
     await context.read<LanguageViewModel>().selectedLanguage(code);
 
     if (context.mounted) {

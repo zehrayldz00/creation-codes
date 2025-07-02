@@ -11,8 +11,8 @@ class OnboardingViewModel extends ChangeNotifier{
 
   int currentPageIndex = 0;
 
-  bool? _isOnboardingSeen;
-  bool? get isOnboardingSeen => _isOnboardingSeen;
+  bool _isOnboardingSeen= false;
+  bool get isOnboardingSeen => _isOnboardingSeen;
 
   OnboardingViewModel({
     required this.isSeenUseCase,
