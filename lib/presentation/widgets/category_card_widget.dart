@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/views/category_detail/category_detail_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
@@ -43,8 +44,8 @@ class CategoryCard extends StatelessWidget {
               SizedBox(height: 30,),
               Expanded(
                 flex:3,
-                child: Image.network(
-                  category.imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl : category.imageUrl,
                   fit: BoxFit.contain,
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:creationcodes/core/constants/app_text_styles.dart';
 import 'package:creationcodes/presentation/viewmodels/language_viewmodel.dart';
 import 'package:creationcodes/presentation/views/model/model_page.dart';
@@ -49,8 +50,8 @@ class FigureCardWidget extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: Image.network(
-                figure.imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: figure.imageUrl,
                 fit: BoxFit.contain,
               ),
             ),
