@@ -3,7 +3,6 @@ import 'package:creationcodes/core/constants/onboarding_strings.dart';
 import 'package:creationcodes/presentation/viewmodels/language_viewmodel.dart';
 import 'package:creationcodes/presentation/viewmodels/onboarding_viewmodel.dart';
 import 'package:creationcodes/presentation/views/onboarding/widgets/smooth_page_ind.dart';
-import 'package:creationcodes/presentation/views/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
@@ -96,15 +95,8 @@ class SkipButton extends StatelessWidget {
       top: 60,
       right: 20,
       child: TextButton(
-        onPressed: () async {
-          final navigator = Navigator.of(context);
-          await Provider.of<OnboardingViewModel>(
-            context,
-            listen: false,
-          ).completeOnboarding();
-          navigator.pushReplacement(
-            MaterialPageRoute(builder: (_) => SplashPage()),
-          );
+        onPressed: () {
+          context.read<OnboardingViewModel>().skipOnboarding(context);
         },
         child: const Icon(Icons.skip_next,),
       ),

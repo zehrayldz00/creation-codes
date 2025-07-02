@@ -30,6 +30,16 @@ class OnboardingViewModel extends ChangeNotifier{
     notifyListeners();
   }
 
+  void skipOnboarding(BuildContext context) async {
+    await completeOnboarding();
+    if (context.mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => SplashPage()),
+      );
+    }
+  }
+
   // Update current index when page changes:
   void updatePageIndicator(index) => currentPageIndex = index;
 
@@ -40,9 +50,9 @@ class OnboardingViewModel extends ChangeNotifier{
   }
 
   // Update current index & jump to next page:
-  void nextPage(context){
+  void nextPage(context) async{
     if(currentPageIndex == 2){
-      completeOnboarding();
+      await completeOnboarding();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SplashPage()));
 
     } else{
