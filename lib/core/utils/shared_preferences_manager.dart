@@ -12,11 +12,11 @@ class SharedPreferencesManager{
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_languageKey);
   }
-  Future<void> setOnboardingCompleted() async{
+  static Future<void> setOnboardingCompleted() async{
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_onboardingKey, true);
   }
-  Future<bool> getOnboardingCompleted() async{
+  static Future<bool> getOnboardingCompleted() async{
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(_onboardingKey) ?? false;
   }

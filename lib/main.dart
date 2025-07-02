@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:creationcodes/core/utils/shared_preferences_manager.dart';
 import 'package:creationcodes/data/repositories/category_repository_impl.dart';
 import 'package:creationcodes/data/repositories/figure_repository_impl.dart';
 import 'package:creationcodes/domain/usecases/set_onboarding_seen_usecases.dart';
@@ -25,8 +24,7 @@ void main() async {
 
   final languageViewModel = LanguageViewModel();
 
-  final helper = SharedPreferencesManager();
-  final isSeenUseCase = IsOnboardingSeenUseCase(helper);
+  final isSeenUseCase = IsOnboardingSeenUseCase();
   final isSeen = await isSeenUseCase();
 
   runApp(
@@ -89,14 +87,9 @@ class _MyAppState extends State<MyApp> {
         ),
 
         ChangeNotifierProvider(
-          create:
-              (_) => OnboardingViewModel(
-                isSeenUseCase: IsOnboardingSeenUseCase(
-                  SharedPreferencesManager(),
-                ),
-                setSeenUseCase: SetOnboardingSeenUseCase(
-                  SharedPreferencesManager(),
-                ),
+          create: (_) => OnboardingViewModel(
+                isSeenUseCase: IsOnboardingSeenUseCase(),
+                setSeenUseCase: SetOnboardingSeenUseCase(),
               ),
         ),
       ],
