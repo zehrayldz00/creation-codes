@@ -162,7 +162,7 @@ class _OnboardingState extends State<Onboarding> with SingleTickerProviderStateM
           ),
           Flexible(flex:2, child: Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-            child: Text(widget.description, style: AppTextStyles.subtitle,textAlign: TextAlign.center,),
+            child: Text(widget.description, style: AppTextStyles.onbStyle,textAlign: TextAlign.center,),
           )),
           SizedBox(height: 120,)
         ],
