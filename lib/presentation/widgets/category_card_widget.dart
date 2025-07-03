@@ -4,7 +4,7 @@ import 'package:creationcodes/presentation/views/category_detail/category_detail
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/constants/app_colors.dart';
+import '../../core/utils/neumorphic_styles.dart';
 import '../../domain/entities/category.dart';
 import '../viewmodels/language_viewmodel.dart';
 
@@ -26,13 +26,7 @@ class CategoryCard extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryDetailPage(modelIDs: category.modelID) ));
       },
       child: Neumorphic(
-         style: NeumorphicStyle(
-           shape: NeumorphicShape.concave,
-           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-           depth: 3,
-           lightSource: LightSource.topLeft,
-           color: AppColors.background
-         ),
+         style: NeumorphicStyles.defaultCard,
           child: Column(
             children: [
               SizedBox(height: 25,),

@@ -6,6 +6,7 @@ import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/language_codes.dart';
+import '../../../core/utils/neumorphic_styles.dart';
 import '../../viewmodels/language_viewmodel.dart';
 import '../home/home_page.dart';
 
@@ -43,12 +44,7 @@ class _LanguageSelectionPageState extends State<LanguageSelectionPage> {
               return Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 20, left: 20),
                 child: Neumorphic(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.concave,
-                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-                    depth: 3,
-                    color: AppColors.background,
-                  ),
+                  style: NeumorphicStyles.defaultCard,
                   child: ListTile(
                     title: Text(language['name']!, textAlign: TextAlign.center, style: AppTextStyles.subtitle,),
                     onTap: () {

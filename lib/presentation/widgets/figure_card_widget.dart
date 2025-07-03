@@ -5,7 +5,7 @@ import 'package:creationcodes/presentation/views/model/model_page.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/constants/app_colors.dart';
+import '../../core/utils/neumorphic_styles.dart';
 import '../../domain/entities/figure.dart';
 
 class FigureCardWidget extends StatelessWidget {
@@ -30,13 +30,7 @@ class FigureCardWidget extends StatelessWidget {
         description: figure.description[languageCode] ?? '',
       )));},
       child: Neumorphic(
-        style: NeumorphicStyle(
-          shape : NeumorphicShape.concave,
-          color: AppColors.background,
-          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-          depth: 8,
-          lightSource: LightSource.topLeft,
-        ),
+        style: NeumorphicStyles.defaultCard, //actually this style has 8 depth but test and decide
         child: Column(
           children: [
             SizedBox(height: 25,),
