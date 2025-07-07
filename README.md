@@ -12,6 +12,7 @@
 - 🧠 Detailed explanations about each piece of evidence,
 - 🌐 Support for 4 different languages (Turkish, English, Spanish, Japanese)
 - 📱 3D model interaction with **model_viewer_plus 1.9.3** that makes reading enjoyable
+- 📱Neumorphic tasarım ile minimalist görünüm. **flutter_neumorphic_plus 3.4.0**
 - 🔁 Clean architecture and MVVM design model
 
 ---
