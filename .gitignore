@@ -76,3 +76,5 @@ assets/screenshots/*.png
 assets/temp/
 
 /src/flutter/
+/flutter/
+**/src/flutter/
