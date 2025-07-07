@@ -1,16 +1,70 @@
-# creationcodes
+# CreationCodes : Discover the guide containing the codes of creation with CreationCodes!
 
-A new Flutter project.
+## 🚀 Overview
 
-## Getting Started
+  We don't read instruction manuals very often, do we?, But we all know that the person who can write the manual most accurately is the person who produces the product.If you have any doubts that the author of the manual is the real manufacturer of the product, come and let this evidence dispel your doubts!. **CreationCodes** is ready to dispel your doubts with evidence from the Qur'an.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔍 Categorized headings,
+- 🧠 Detailed explanations about each piece of evidence,
+- 🌐 Support for 4 different languages (Turkish, English, Spanish, Japanese)
+- 📱 3D model interaction that makes reading enjoyable
+- 🔁 Clean architecture and MVVM design model
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+| Home | Category | 3D Model Viewer |
+|------|----------|-----------------|
+| ![Home]() | ![Category]() | ![Model]() |
+
+---
+
+## 🧰 Technologies Used
+
+- Flutter  
+- Dart  
+- Firebase Firestore & Storage  
+- Provider (State Management)  
+- MVVM + Clean Architecture principles  
+- Figma (UI design & prototyping)
+
+---
+
+## 🧑‍💻 Getting Started
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-username/creation-codes.git
+2. Navigate to project folder:
+   ```bash
+   cd creation-codes
+3. Install dependencies:
+    ```bash
+   flutter pub get
+4. Run the app:
+   ```bash
+   flutter run
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Whether it's fixing a bug, improving the UI, or suggesting new features – all help is appreciated.
+
+---
+
+##💡 Project Structure (Clean Architecture)
+
+lib/
+├── core/             # Constants, utils, and error handling
+├── data/             # Data sources, models, repositories
+├── domain/           # Entities, abstract repositories, use cases
+├── presentation/     # ViewModels, views, widgets
+└── main.dart
+
+---
+
+⭐️ Support
+If you find this project useful or interesting, consider giving it a ⭐ on GitHub. It helps visibility and motivates further development!
