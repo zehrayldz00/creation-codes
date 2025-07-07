@@ -16,9 +16,9 @@
 
 ---
 
-| Home | Category | 3D Model Viewer |
-|------|----------|-----------------|
-| ![Home]() | ![Category]() | ![Model]() |
+| Categories             | Subtitles                  | Model                   | Model                  |
+|------------------------|----------------------------|-------------------------|------------------------|
+| ![Home](assets/s5.png) | ![Category](assets/s6.png) | ![Model](assets/s7.png) |![Model](assets/s9.png) |
 
 ---
 
@@ -52,17 +52,6 @@
 
 ## 🤝 Contributing
 Contributions are welcome! Whether it's fixing a bug, improving the UI, or suggesting new features – all help is appreciated.
-
----
-
-##💡 Project Structure (Clean Architecture)
-
-lib/
-├── core/             # Constants, utils, and error handling
-├── data/             # Data sources, models, repositories
-├── domain/           # Entities, abstract repositories, use cases
-├── presentation/     # ViewModels, views, widgets
-└── main.dart
 
 ---
 
