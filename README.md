@@ -11,14 +11,14 @@
 - 🔍 Categorized headings,
 - 🧠 Detailed explanations about each piece of evidence,
 - 🌐 Support for 4 different languages (Turkish, English, Spanish, Japanese)
-- 📱 3D model interaction that makes reading enjoyable
+- 📱 3D model interaction with **model_viewer_plus 1.9.3** that makes reading enjoyable
 - 🔁 Clean architecture and MVVM design model
 
 ---
 
-| Categories             | Subtitles                  | Model                   | Model                  |
-|------------------------|----------------------------|-------------------------|------------------------|
-| ![Home](assets/s5.png) | ![Category](assets/s6.png) | ![Model](assets/s7.png) |![Model](assets/s9.png) |
+| Categories             | Subtitles                  | Model                     | Model                    |
+|------------------------|----------------------------|---------------------------|--------------------------|
+| ![Home](assets/s5.png) | ![Category](assets/s6.png) | ![Model](assets/s7.png)   |![Model](assets/s9.png)   |
 
 ---
 
