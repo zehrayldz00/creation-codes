@@ -38,7 +38,7 @@
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/creation-codes.git
+   git clone https://github.com/zehrayldz00/creation-codes.git
 2. Navigate to project folder:
    ```bash
    cd creation-codes
