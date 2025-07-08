@@ -37,7 +37,7 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
       body: Consumer<FigureViewModel>(
         builder: (context, vm, _) {
           if (vm.isLoading) return Center(child: CircularProgressIndicator());
-          if (vm.error != null) return Text("Hata var hata: ${vm.error}");
+          if (vm.error != null) return Text("No data has been added to this field yet.");
 
           return GridView.builder(
             padding: AppPaddings.figureCardAll,
