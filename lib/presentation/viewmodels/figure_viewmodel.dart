@@ -12,7 +12,7 @@ class FigureViewModel extends ChangeNotifier{
   List<Figure> _figures = [];
   List<Figure> get figures => _figures;
 
-  bool _isLoading = false;
+   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
   String? _error;
