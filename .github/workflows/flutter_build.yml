@@ -3,7 +3,9 @@ name: Flutter Build and Release APK
 on:
   push:
     tags:
-      - 'v*'  # Örn: v1.0.0 gibi bir tag ile push edince çalışır
+      - 'v*'
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -16,7 +18,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.5' # senin kullandığın versiyonu yaz
+          flutter-version: '3.32.5'
 
       - name: Decode google-services.json
         run: |
