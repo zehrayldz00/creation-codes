@@ -21,10 +21,11 @@ class AppTextStyles {
     color: AppColors.secondaryText
   );
 
-  static TextStyle ayetStyle = GoogleFonts.dancingScript(
-    fontSize : 25,
+  static TextStyle ayetStyle = const TextStyle(
+    fontFamily: 'DancingScript',
+    fontSize: 25,
     fontWeight: FontWeight.bold,
-    color : AppColors.primaryText
+    color: AppColors.primaryText,
   );
 
 }
