@@ -25,8 +25,30 @@ class ModelPage extends StatefulWidget {
 }
 
 class _ModelPageState extends State<ModelPage> {
+  final ScrollController _scrollController = ScrollController();
+  double _scrollProgress = 0.0;
 
   bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      final maxScroll = _scrollController.position.maxScrollExtent;
+      final currentScroll = _scrollController.position.pixels;
+      print('maxScroll: $maxScroll, currentScroll: $currentScroll');
+      setState(() {
+        _scrollProgress =
+            (maxScroll == 0) ? 0 : (currentScroll / maxScroll).clamp(0.0, 1.0);
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +62,43 @@ class _ModelPageState extends State<ModelPage> {
         future: FirebaseStorageService.getModelDownloadUrl(widget.modelPath),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    ModelViewerWidget(
-                      modelPath: snapshot.data!,
-                    ),
-                    Padding(
-                      padding: AppPaddings.ayetPadding,
-                      child: Text(widget.ayet, style: AppTextStyles.ayetStyle),
-                    ),
-                    Padding(
-                      padding: AppPaddings.figureCardAll,
-                      child: Text(
-                        widget.description,
-                        style: AppTextStyles.subtitle,
-                      ),
-                    ),
-                  ],
+            return Column(
+              children: [
+                LinearProgressIndicator(
+                  value: _scrollProgress,
+                  minHeight: 4,
+                  color: Colors.blue,
+                  backgroundColor: Colors.grey.shade300,
                 ),
-              );
+                Expanded(
+                  child: Scrollbar(
+                    thickness: 8,
+                    controller: _scrollController,
+                    trackVisibility: true,
+                    child: ListView(
+                      controller: _scrollController,
+                      children: [
+                        ModelViewerWidget(modelPath: snapshot.data!),
+                        Padding(
+                          padding: AppPaddings.ayetPadding,
+                          child: Text(
+                            widget.ayet,
+                            style: AppTextStyles.ayetStyle,
+                          ),
+                        ),
+                        Padding(
+                          padding: AppPaddings.figureCardAll,
+                          child: Text(
+                            widget.description,
+                            style: AppTextStyles.subtitle,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
             //
           } else if (snapshot.hasError) {
             return Center(child: Text("Hata: ${snapshot.error}"));
